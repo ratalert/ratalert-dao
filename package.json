@@ -1,0 +1,30 @@
+{
+  "name": "ratalert-dao",
+  "description": "RatAlert DAO",
+  "version": "1.0.0",
+  "main": "truffle-config.js",
+  "author": "RatAlert",
+  "homepage": "https://github.com/ratalert/ratalert-dao#readme",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ratalert/ratalert-dao.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ratalert/ratalert-dao/issues"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.6.0",
+    "@openzeppelin/contracts-upgradeable": "^4.6.0",
+    "@openzeppelin/truffle-upgrades": "^1.15.0",
+    "@truffle/hdwallet-provider": "^2.0.8",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1"
+  }
+}
