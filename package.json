@@ -7,7 +7,13 @@
   "homepage": "https://github.com/ratalert/ratalert-dao#readme",
   "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "truffle compile",
+    "migrate": "truffle migrate",
+    "test": "truffle test",
+    "deploy-test": "truffle migrate --network test",
+    "deploy-beta": "truffle migrate --network beta",
+    "deploy-live": "truffle migrate --network live",
+    "verify": "truffle run verify TimelockController"
   },
   "repository": {
     "type": "git",
@@ -21,7 +27,8 @@
     "@openzeppelin/contracts-upgradeable": "^4.6.0",
     "@openzeppelin/truffle-upgrades": "^1.15.0",
     "@truffle/hdwallet-provider": "^2.0.8",
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "truffle-plugin-verify": "^0.5.25"
   },
   "devDependencies": {
     "chai": "^4.3.6",
