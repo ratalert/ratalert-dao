@@ -13,11 +13,13 @@ This repository contains the Solidity smart [contracts](./contracts/) of the DAO
 - [Whitepaper](https://ratalert.com/whitepaper)
 - [Infographic](https://ratalert.com/infographic)
 - [Roadmap](https://ratalert.com/roadmap)
+- [LP program](https://lp.ratalert.com/)
 - [Twitter](https://twitter.com/RatAlertNFT)
 - [Discord](https://discord.gg/RatAlert)
 - [Telegram](https://t.me/ratalert_chat)
 - [Medium](https://ratalert.medium.com/)
 - [GitHub](https://github.com/ratalert)
+- [DAO Gnosis Safe](https://gnosis-safe.io/app/matic:0xbEf526C8325C47817ceb435011bf1E6bc9ec691d/home)
 
 
 ## Development
