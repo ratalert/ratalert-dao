@@ -1,4 +1,4 @@
-const { scheduleAndExecute } = require('./helper');
+const { encode, scheduleAndExecute } = require('./helper');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 
@@ -6,10 +6,6 @@ chai.use(chaiAsPromised);
 
 const expect = chai.expect;
 const TimelockController = artifacts.require('TimelockController');
-
-function encode(role) {
-  return web3.utils.soliditySha3(web3.utils.fromAscii(role));
-}
 
 contract('TimelockController', (accounts) => {
   const anon = accounts[1];
