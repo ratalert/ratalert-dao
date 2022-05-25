@@ -6,8 +6,7 @@ const { time } = require('@openzeppelin/test-helpers');
 chai.use(chaiAsPromised);
 
 const expect = chai.expect;
-const FastFood = artifacts.require('FastFood');
-const DAOFastFood = artifacts.require('DAOFastFood');
+const GourmetFood = artifacts.require('DAOGourmetFood');
 const TimelockController = artifacts.require('TimelockController');
 const RatGovernor = artifacts.require('RatGovernor');
 
@@ -16,8 +15,7 @@ contract('RatGovernor', (accounts) => {
   const dao = accounts[9];
 
   before(async () => {
-    this.fastFood = await FastFood.deployed();
-    this.daoFastFood = await DAOFastFood.deployed();
+    this.gourmetFood = await GourmetFood.deployed();
     this.timelockController = await TimelockController.deployed();
     this.ratGovernor = await RatGovernor.deployed();
 
@@ -25,14 +23,10 @@ contract('RatGovernor', (accounts) => {
     const amount1 = toWei(100);
     const amount2 = toWei(200);
 
-    await this.fastFood.mint(voter1, amount1, { from: dao });
-    await this.fastFood.mint(voter2, amount2, { from: dao });
-    await this.fastFood.approve(this.daoFastFood.address, amount1, { from: voter1 });
-    await this.fastFood.approve(this.daoFastFood.address, amount2, { from: voter2 });
-    await this.daoFastFood.depositFor(voter1, amount1, { from: voter1 });
-    await this.daoFastFood.depositFor(voter2, amount2, { from: voter2 });
-    await this.daoFastFood.delegate(voter1, { from: voter1 });
-    await this.daoFastFood.delegate(voter2, { from: voter2 });
+    await this.gourmetFood.mint(voter1, amount1, { from: dao });
+    await this.gourmetFood.mint(voter2, amount2, { from: dao });
+    await this.gourmetFood.delegate(voter1, { from: voter1 });
+    await this.gourmetFood.delegate(voter2, { from: voter2 });
   });
 
   describe('propose()', () => {
@@ -50,7 +44,7 @@ contract('RatGovernor', (accounts) => {
     });
   });
 
-  describe('castVote', () => {
+  describe('castVote()', () => {
     it('cannot vote immediately', async () => {
       await expect(this.ratGovernor.castVote(this.proposalId, 0, { from: voter1 })).to.eventually.be.rejectedWith('vote not currently active');
     });
@@ -65,6 +59,9 @@ contract('RatGovernor', (accounts) => {
       const res = await this.ratGovernor.castVote(this.proposalId, 1, { from: voter2 });
       expect(res.logs[0].args.weight).to.be.a.bignumber.eq(toWei(200));
     });
+  });
+
+  describe('queue() & execute()', () => {
     it('executes a successful proposal', async () => {
       const block = await this.ratGovernor.proposalDeadline(this.proposalId);
       await time.advanceBlockTo(block);

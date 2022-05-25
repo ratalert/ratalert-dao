@@ -5,8 +5,8 @@ module.exports = (network, accounts = []) => ({
   dao: {
     address: env('DAO_ADDRESS', accounts ? accounts[9] : ''),
   },
-  fastFood: {
-    address: env('FASTFOOD_ADDRESS', ''),
+  gourmetFood: {
+    address: env('GOURMETFOOD_ADDRESS', ''),
   },
   timelock: {
     address: env('TIMELOCK_ADDRESS'),
