@@ -34,7 +34,7 @@ exports.scheduleAndExecute = async (contract, func, args, options, salt = 0, del
     delay || cfg.timelock.minDelay,
   ];
   if (options.raw) {
-    console.log(`Wrapped: ${contract.constructor._json.contractName}[${contract.address}].${func}(${timelockArgs.length} args) \n\nAddress: ${cfg.timelock.address}\n\nABI:\n${JSON.stringify(timelockController.abi)}\n`);
+    console.log(`Wrapped: ${contract.constructor._json.contractName}[${contract.address}].${func}(${timelockArgs.length} args) \n\nAddress: ${timelockController.address}\n\nABI:\n${JSON.stringify(timelockController.abi)}\n`);
     return [
       {
         method: 'schedule',
